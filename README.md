@@ -9,5 +9,5 @@ my merge sort: 292 ns
 std sort: 129 ns
 ```
 
-## Peformance
+## Performance
 O(NlogN) (where N is the length of vector)
