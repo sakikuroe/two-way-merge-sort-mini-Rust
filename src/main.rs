@@ -20,7 +20,7 @@ where
         let mut f_i = 0;
         let mut b_i = 0;
         for x in self {
-            if f_i < forward.len() && b_i < backward.len() {
+            if forward.get(f_i).is_some() && backward.get(b_i).is_some() {
                 if forward[f_i] <= backward[b_i] {
                     *x = forward[f_i];
                     f_i += 1;
@@ -29,7 +29,7 @@ where
                     b_i += 1;
                 }
             } else {
-                if f_i < forward.len() {
+                if forward.get(f_i).is_some() {
                     *x = forward[f_i];
                     f_i += 1;
                 } else {
