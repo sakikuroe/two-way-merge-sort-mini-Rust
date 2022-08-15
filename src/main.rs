@@ -20,22 +20,25 @@ where
         let mut f_i = 0;
         let mut b_i = 0;
         for x in self {
-            if forward.get(f_i).is_some() && backward.get(b_i).is_some() {
-                if forward[f_i] <= backward[b_i] {
-                    *x = forward[f_i];
+            match (forward.get(f_i), backward.get(b_i)) {
+                (Some(&u), Some(&v)) => {
+                    if u <= v {
+                        *x = u;
+                        f_i += 1;
+                    } else {
+                        *x = v;
+                        b_i += 1;
+                    }
+                }
+                (Some(&u), None) => {
+                    *x = u;
                     f_i += 1;
-                } else {
-                    *x = backward[b_i];
+                }
+                (None, Some(&v)) => {
+                    *x = v;
                     b_i += 1;
                 }
-            } else {
-                if forward.get(f_i).is_some() {
-                    *x = forward[f_i];
-                    f_i += 1;
-                } else {
-                    *x = backward[b_i];
-                    b_i += 1;
-                }
+                (None, None) => {}
             }
         }
     }
@@ -56,10 +59,10 @@ where
 
 fn main() {
     let mut rng = rand::thread_rng();
-    let len = 1 << 21;
+    let len = 1000000;
     println!("length of vector: {}", len);
     let mut v = (0..len)
-        .map(|_| rng.gen_range(0..1000000))
+        .map(|_| rng.gen_range(0..std::usize::MAX))
         .collect::<Vec<usize>>();
     let mut u = v.clone();
 
