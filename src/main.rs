@@ -74,5 +74,5 @@ fn main() {
     let start = std::time::Instant::now();
     u.sort();
     let end = start.elapsed();
-    println!("std sort: {} ns", end.subsec_nanos() / 1_000_000);
+    println!("std sort: {} ns", end.subsec_millis());
 }
