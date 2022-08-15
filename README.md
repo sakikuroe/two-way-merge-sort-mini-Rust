@@ -3,10 +3,10 @@ Simple implementation of 2-way merge sort algorithms for understanding the algor
 
 ## Exsample
 ```
-$ cargo run --release
-length of vector: 2097152
-my merge sort: 292 ns
-std sort: 129 ns
+$ cargo run --release --quiet
+length of vector: 1000000
+my merge sort: 148 ns
+std sort: 59 ns
 ```
 
 ## Performance
