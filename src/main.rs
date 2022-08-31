@@ -69,10 +69,10 @@ fn main() {
     let start = std::time::Instant::now();
     v.merge_sort();
     let end = start.elapsed();
-    println!("my merge sort: {} ns", end.subsec_millis());
+    println!("my merge sort: {} ms", end.as_millis());
 
     let start = std::time::Instant::now();
     u.sort();
     let end = start.elapsed();
-    println!("std sort: {} ns", end.subsec_millis());
+    println!("std sort: {} ms", end.as_millis());
 }
